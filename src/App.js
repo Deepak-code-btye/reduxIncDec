@@ -1,24 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import { useSelector, useDispatch } from 'react-redux';
+import { incNumber, decNumber } from './action';
+const App = () => {
+  const myState = useSelector((state) => state.changeTheNumber);
+  const dispatch = useDispatch()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <center>
+        <h2>Increment/Decrement No.</h2>
+        <button onClick={() => dispatch(decNumber())}>-</button>
+        <input type='text' value={myState} />
+        <button onClick={() => dispatch(incNumber())}>+</button>
+
+      </center>
+    </>
+
   );
 }
 
